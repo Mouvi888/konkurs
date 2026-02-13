@@ -233,7 +233,6 @@
 
         .map_wrapper {
             position: relative;
-            width: 100%;
             display: flex;
             justify-content: center;
             border-radius: 24px;
@@ -244,6 +243,11 @@
             width: 800px;  
             max-width: 900px;
             margin: 0 auto;
+            width: 100%;
+            max-width: 100%;
+           overflow-x: auto;
+           -webkit-overflow-scrolling: touch;
+           justify-content: flex-start;
         }
 
         .map {
@@ -255,6 +259,10 @@
                         filter 0.5s ease;
             filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
             border-radius: 16px;
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        justify-content: flex-start;
         }
 
         /* Анимация при наведении на контейнер карты */
@@ -317,6 +325,8 @@
             align-items: center;
             justify-content: center;
             gap: 0.6rem;
+            font-size: 0.8rem;
+        padding: 0.3rem 0.8rem;
         }
 
         .map_caption span {
@@ -336,12 +346,16 @@
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(10px);
             border-radius: 60px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.6rem;
         }
 
         .legend_item {
             display: flex;
             align-items: center;
             gap: 0.6rem;
+            font-size: 0.75rem;
         }
 
         .legend_color {
@@ -641,6 +655,7 @@
                 font-size: 1.3rem;
             }
             .map_container {
+        border-radius: 32px;
                 padding: 1rem;
             }
             .map_wrapper {
