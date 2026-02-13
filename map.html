@@ -54,7 +54,6 @@ body {
     width: 100%;
 }
 
-/* ===== ШАПКА ===== */
 .header {
     background: linear-gradient(135deg, #1a3a4a 0%, #1e4a5a 50%, #2a5f6e 100%);
     color: white;
@@ -218,8 +217,6 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
-
-/* ===== КОНТЕЙНЕР КАРТЫ ===== */
 .map_container {
     background: linear-gradient(145deg, #d4e4e0, #c2d5d0);
     border-radius: 32px;
@@ -256,7 +253,6 @@ body {
     max-width: 100%;
 }
 
-/* Анимация при наведении */
 .map_wrapper:hover .map {
     transform: scale(1.02) translateY(-5px);
     filter: drop-shadow(0 25px 35px rgba(42, 75, 92, 0.3));
@@ -303,7 +299,6 @@ body {
     left: 120%;
 }
 
-/* Подпись под картой */
 .map_caption {
     text-align: center;
     margin-top: 1.5rem;
@@ -384,7 +379,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* ===== РЕГИОНЫ / КАРТОЧКИ ===== */
 .regions_grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -546,7 +540,6 @@ body {
     color: var(--accent-dark);
 }
 
-/* ===== ФУТЕР ===== */
 .footer {
     background: linear-gradient(145deg, #1e3a47, #1a303a);
     color: #dfd9c7;
@@ -603,7 +596,6 @@ body {
     border-top: 1px solid rgba(212, 180, 131, 0.2);
 }
 
-/* ===== АДАПТАЦИЯ ДЛЯ РАЗНЫХ ЭКРАНОВ ===== */
 @media (min-width: 1025px) {
     .map_wrapper {
         max-width: 900px;
@@ -913,15 +905,12 @@ body {
                 </div>
                 
                 <div class="map_legend">
-                <strong>Широкий простор для мечты и для жизни, грядущие нам открывают года.</strong>
+                <h1>Регионы России и народы живущие в них.</h1>
             </div>
 
             
             <div class="Регионы">
-                                         <h1>Регионы России и народы живущие в них.</h1>
             </div>
-
-            <!-- СЕТКА РЕГИОНОВ И НАРОДОВ -->
             <div class="regions_grid">
                 <div class="region_card">
                     <div class="region_emoji">🏛️</div>
