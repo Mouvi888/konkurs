@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
+<head
+    <link rel="icon" type="image/png" href="197408-no.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Галерея - Красоты России</title>
+    <title>Галерея · Красоты России</title>
     <style>
+        /* ===== ОБЩИЕ СТИЛИ ===== */
         * {
             margin: 0;
             padding: 0;
@@ -145,10 +147,12 @@
             font-style: italic;
         }
 
+        /* ===== ОСНОВНОЙ КОНТЕНТ ===== */
         .main_content {
             flex: 1;
         }
 
+        /* ===== ГЕРОЙ ГАЛЕРЕИ ===== */
         .gallery_hero {
             background: linear-gradient(145deg, #fff5eb, #fffaf2);
             border-radius: 60px 60px 60px 20px;
@@ -215,6 +219,7 @@
             letter-spacing: 1px;
         }
 
+        /* ===== ФИЛЬТРЫ ===== */
         .gallery_filters {
             display: flex;
             flex-wrap: wrap;
@@ -251,6 +256,7 @@
             margin-bottom: 3rem;
         }
 
+        /* ===== КАРТОЧКА ГАЛЕРЕИ ===== */
         .gallery_card {
             background: white;
             border-radius: 32px;
@@ -277,7 +283,6 @@
             padding-top: 66.66%; /* Соотношение 3:2 */
             overflow: hidden;
             background: #f7f3ed;
-            cursor: pointer;
         }
 
         .gallery_image {
@@ -294,35 +299,7 @@
             transform: scale(1.08);
         }
 
-        .gallery_overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to top, rgba(26, 58, 74, 0.8), rgba(26, 58, 74, 0.2));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .gallery_card:hover .gallery_overlay {
-            opacity: 1;
-        }
-
-        .overlay_icon {
-            color: white;
-            font-size: 3rem;
-            transform: scale(0.8);
-            transition: transform 0.3s ease;
-        }
-
-        .gallery_card:hover .overlay_icon {
-            transform: scale(1);
-        }
-
+        /* ПЛАШКА РЕГИОНА */
         .gallery_region {
             position: absolute;
             top: 1rem;
@@ -339,6 +316,7 @@
             z-index: 2;
         }
 
+        /* ИНФОРМАЦИЯ О ФОТО */
         .gallery_info {
             padding: 1.5rem;
             flex: 1;
@@ -366,154 +344,56 @@
         .gallery_description {
             color: var(--text-soft);
             font-size: 0.95rem;
-            margin-bottom: 1rem;
             line-height: 1.5;
         }
 
-        .gallery_tags {
+        /* ===== БАННЕР ===== */
+        .banner {
+            background: linear-gradient(145deg, #fff5eb, #ffeede);
+            border-radius: 60px;
+            padding: 2.5rem;
+            margin: 3rem 0;
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: auto;
-        }
-
-        .gallery_tag {
-            background: #f1ebe1;
-            padding: 0.3rem 1rem;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--primary-dark);
-        }
-
-        /* ЛАЙКИ */
-        .gallery_meta {
-            display: flex;
-            gap: 1rem;
-            margin-top: 0.8rem;
-            padding-top: 0.8rem;
-            border-top: 1px solid rgba(212, 163, 115, 0.2);
-        }
-
-        .meta_item {
-            display: flex;
             align-items: center;
-            gap: 0.4rem;
-            color: var(--text-soft);
-            font-size: 0.9rem;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
         }
 
-        /* ===== ПАГИНАЦИЯ ===== */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            gap: 0.8rem;
-            margin: 3rem 0 2rem;
+        .banner::before {
+            content: "📸";
+            position: absolute;
+            right: 0;
+            bottom: -20px;
+            font-size: 8rem;
+            opacity: 0.08;
+            transform: rotate(-5deg);
         }
 
-        .pagination_btn {
-            background: white;
-            border: 1px solid rgba(212, 163, 115, 0.3);
-            padding: 0.7rem 1.2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            color: var(--text-soft);
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .pagination_btn:hover {
-            background: var(--accent);
+        .banner_text h3 {
+            font-size: 1.8rem;
             color: var(--primary-dark);
-            border-color: var(--accent);
-            transform: translateY(-2px);
+            margin-bottom: 0.5rem;
         }
 
-        .pagination_btn.active {
+        .banner_btn {
             background: var(--primary);
             color: white;
-            border-color: var(--primary);
-        }
-
-        /* ===== МОДАЛЬНОЕ ОКНО ===== */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal_content {
-            max-width: 1200px;
-            width: 100%;
-            background: white;
-            border-radius: 48px;
-            overflow: hidden;
-            position: relative;
-            animation: modalPop 0.4s ease;
-        }
-
-        @keyframes modalPop {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .modal_image {
-            width: 100%;
-            max-height: 70vh;
-            object-fit: contain;
-            background: #1a1a1a;
-        }
-
-        .modal_info {
-            padding: 2rem;
-            background: white;
-        }
-
-        .modal_close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
+            padding: 1rem 2.5rem;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 700;
             transition: var(--transition);
-            color: var(--primary-dark);
-            z-index: 10;
+            box-shadow: 0 10px 20px rgba(42,95,110,0.2);
+            position: relative;
+            z-index: 2;
         }
 
-        .modal_close:hover {
+        .banner_btn:hover {
             background: var(--accent);
-            color: white;
-            transform: rotate(90deg);
+            color: var(--primary-dark);
+            transform: scale(1.05);
         }
 
         /* ===== ФУТЕР ===== */
@@ -608,6 +488,13 @@
                 font-size: 0.75rem;
                 padding: 0.3rem 1rem;
             }
+            
+            .banner {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+                padding: 2rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -645,14 +532,6 @@
             .footer_links {
                 justify-content: center;
             }
-            
-            .modal_content {
-                border-radius: 24px;
-            }
-            
-            .modal_info {
-                padding: 1.5rem;
-            }
         }
     </style>
 </head>
@@ -674,25 +553,47 @@
 
     <main class="main_content">
         <div class="container">
+            <!-- ГЕРОЙ ГАЛЕРЕИ -->
             <div class="gallery_hero">
                 <div class="gallery_hero_text">
-                    <h2>Красоты России</h2>
-                    <p>Красивые фотографии с разных уголков нашей необъятной родины.</p>
+                    <h2>📸 Красоты России</h2>
+                    <p>Уникальные фотографии со всех уголков нашей необъятной родины</p>
                 </div>
+                <div class="gallery_stats">
+                    <div class="stat_item">
+                        <div class="stat_number">30+</div>
+                        <div class="stat_label">регионов</div>
+                    </div>
+                    <div class="stat_item">
+                        <div class="stat_number">100+</div>
+                        <div class="stat_label">фотографий</div>
+                    </div>
                     <div class="stat_item">
                         <div class="stat_number">∞</div>
                         <div class="stat_label">красота</div>
                     </div>
                 </div>
             </div>
+
+            <!-- ФИЛЬТРЫ ПО РЕГИОНАМ -->
+            <div class="gallery_filters">
+                <button class="filter_btn active">Все</button>
+                <button class="filter_btn">Карелия</button>
+                <button class="filter_btn">Кавказ</button>
+                <button class="filter_btn">Байкал</button>
+                <button class="filter_btn">Алтай</button>
+                <button class="filter_btn">Камчатка</button>
+                <button class="filter_btn">Крым</button>
+                <button class="filter_btn">Золотое кольцо</button>
+            </div>
+
+            <!-- СЕТКА ГАЛЕРЕИ -->
             <div class="gallery_grid">
+                <!-- КАРТОЧКА 1: Карелия -->
                 <div class="gallery_card">
                     <span class="gallery_region">🏞️ Карелия</span>
                     <div class="gallery_image_container">
-                        <img class="gallery_image" src="https://placehold.co/800x533/f1ebe1/a5b8c9?text=Ладожское+озеро" alt="Ладожское озеро, Карелия" onclick="openModal(this)">
-                        <div class="gallery_overlay">
-                            <span class="overlay_icon">🔍</span>
-                        </div>
+                        <img class="gallery_image" src="https://placehold.co/800x533/f1ebe1/a5b8c9?text=Ладожское+озеро" alt="Ладожское озеро, Карелия">
                     </div>
                     <div class="gallery_info">
                         <h3 class="gallery_title">Ладожское озеро</h3>
@@ -700,8 +601,6 @@
                             <span>📍 Карелия</span>
                         </div>
                         <p class="gallery_description">Крупнейшее пресноводное озеро Европы. Скалистые берега и древние шхеры.</p>
-                        <div class="gallery_meta">
-                        </div>
                     </div>
                 </div>
 
@@ -709,10 +608,7 @@
                 <div class="gallery_card">
                     <span class="gallery_region">⛰️ Кавказ</span>
                     <div class="gallery_image_container">
-                        <img class="gallery_image" src="https://placehold.co/800x533/f1ebe1/b58b6d?text=Эльбрус" alt="Гора Эльбрус, Кавказ" onclick="openModal(this)">
-                        <div class="gallery_overlay">
-                            <span class="overlay_icon">🔍</span>
-                        </div>
+                        <img class="gallery_image" src="https://placehold.co/800x533/f1ebe1/b58b6d?text=Эльбрус" alt="Гора Эльбрус, Кавказ">
                     </div>
                     <div class="gallery_info">
                         <h3 class="gallery_title">Гора Эльбрус</h3>
@@ -720,9 +616,6 @@
                             <span>📍 Кабардино-Балкария</span>
                         </div>
                         <p class="gallery_description">Высочайшая вершина России и Европы (5642 м). Двуглавый стратовулкан.</p>
-                        </div>
-                        <div class="gallery_meta">
-                        </div>
                     </div>
                 </div>
 
@@ -730,10 +623,7 @@
                 <div class="gallery_card">
                     <span class="gallery_region">💧 Байкал</span>
                     <div class="gallery_image_container">
-                        <img class="gallery_image" src="https://placehold.co/800x533/f1ebe1/7fa5b0?text=Озеро+Байкал" alt="Озеро Байкал" onclick="openModal(this)">
-                        <div class="gallery_overlay">
-                            <span class="overlay_icon">🔍</span>
-                        </div>
+                        <img class="gallery_image" src="https://placehold.co/800x533/f1ebe1/7fa5b0?text=Озеро+Байкал" alt="Озеро Байкал">
                     </div>
                     <div class="gallery_info">
                         <h3 class="gallery_title">Озеро Байкал</h3>
@@ -741,9 +631,6 @@
                             <span>📍 Иркутская область / Бурятия</span>
                         </div>
                         <p class="gallery_description">Самое глубокое озеро на планете, хранит 20% всей пресной воды мира.</p>
-                        </div>
-                        <div class="gallery_meta">
-                        </div>
                     </div>
                 </div>
 
@@ -751,10 +638,7 @@
                 <div class="gallery_card">
                     <span class="gallery_region">🏔️ Алтай</span>
                     <div class="gallery_image_container">
-                        <img class="gallery_image" src="https://placehold.co/800x533/f1ebe1/8ba88b?text=Гора+Белуха" alt="Гора Белуха, Алтай" onclick="openModal(this)">
-                        <div class="gallery_overlay">
-                            <span class="overlay_icon">🔍</span>
-                        </div>
+                        <img class="gallery_image" src="https://placehold.co/800x533/f1ebe1/8ba88b?text=Гора+Белуха" alt="Гора Белуха, Алтай">
                     </div>
                     <div class="gallery_info">
                         <h3 class="gallery_title">Гора Белуха</h3>
@@ -762,9 +646,6 @@
                             <span>📍 Республика Алтай</span>
                         </div>
                         <p class="gallery_description">Высшая точка Алтая (4509 м), священная гора для алтайцев.</p>
-                        </div>
-                        <div class="gallery_meta">
-                        </div>
                     </div>
                 </div>
 
@@ -772,10 +653,7 @@
                 <div class="gallery_card">
                     <span class="gallery_region">🌋 Камчатка</span>
                     <div class="gallery_image_container">
-                        <img class="gallery_image" src="https://placehold.co/800x533/f1ebe1/9b9f7e?text=Вулканы+Камчатки" alt="Вулканы Камчатки" onclick="openModal(this)">
-                        <div class="gallery_overlay">
-                            <span class="overlay_icon">🔍</span>
-                        </div>
+                        <img class="gallery_image" src="https://placehold.co/800x533/f1ebe1/9b9f7e?text=Вулканы+Камчатки" alt="Вулканы Камчатки">
                     </div>
                     <div class="gallery_info">
                         <h3 class="gallery_title">Вулканы Камчатки</h3>
@@ -783,8 +661,6 @@
                             <span>📍 Камчатский край</span>
                         </div>
                         <p class="gallery_description">Объект Всемирного наследия ЮНЕСКО. Более 300 вулканов, 29 действующих.</p>
-                        <div class="gallery_meta">
-                        </div>
                     </div>
                 </div>
 
@@ -792,10 +668,7 @@
                 <div class="gallery_card">
                     <span class="gallery_region">🌊 Крым</span>
                     <div class="gallery_image_container">
-                        <img class="gallery_image" src="https://placehold.co/800x533/f1ebe1/c99a6b?text=Ласточкино+гнездо" alt="Ласточкино гнездо, Крым" onclick="openModal(this)">
-                        <div class="gallery_overlay">
-                            <span class="overlay_icon">🔍</span>
-                        </div>
+                        <img class="gallery_image" src="https://placehold.co/800x533/f1ebe1/c99a6b?text=Ласточкино+гнездо" alt="Ласточкино гнездо, Крым">
                     </div>
                     <div class="gallery_info">
                         <h3 class="gallery_title">Ласточкино гнездо</h3>
@@ -803,9 +676,6 @@
                             <span>📍 Ялта, Крым</span>
                         </div>
                         <p class="gallery_description">Знаменитый замок на отвесной скале мыса Ай-Тодор, символ Южного берега Крыма.</p>
-                        </div>
-                        <div class="gallery_meta">
-                        </div>
                     </div>
                 </div>
 
@@ -813,10 +683,7 @@
                 <div class="gallery_card">
                     <span class="gallery_region">🏛️ Золотое кольцо</span>
                     <div class="gallery_image_container">
-                        <img class="gallery_image" src="https://placehold.co/800x533/f1ebe1/e9b87b?text=Суздаль" alt="Суздаль" onclick="openModal(this)">
-                        <div class="gallery_overlay">
-                            <span class="overlay_icon">🔍</span>
-                        </div>
+                        <img class="gallery_image" src="https://placehold.co/800x533/f1ebe1/e9b87b?text=Суздаль" alt="Суздаль">
                     </div>
                     <div class="gallery_info">
                         <h3 class="gallery_title">Суздаль</h3>
@@ -824,8 +691,6 @@
                             <span>📍 Владимирская область</span>
                         </div>
                         <p class="gallery_description">Город-музей под открытым небом, жемчужина Золотого кольца России.</p>
-                        <div class="gallery_meta">
-                        </div>
                     </div>
                 </div>
 
@@ -833,10 +698,7 @@
                 <div class="gallery_card">
                     <span class="gallery_region">⛰️ Урал</span>
                     <div class="gallery_image_container">
-                        <img class="gallery_image" src="https://placehold.co/800x533/f1ebe1/8ba88b?text=Таганай" alt="Национальный парк Таганай" onclick="openModal(this)">
-                        <div class="gallery_overlay">
-                            <span class="overlay_icon">🔍</span>
-                        </div>
+                        <img class="gallery_image" src="https://placehold.co/800x533/f1ebe1/8ba88b?text=Таганай" alt="Национальный парк Таганай">
                     </div>
                     <div class="gallery_info">
                         <h3 class="gallery_title">Таганай</h3>
@@ -844,8 +706,6 @@
                             <span>📍 Челябинская область</span>
                         </div>
                         <p class="gallery_description">Национальный парк с уникальными каменными реками и останцами причудливых форм.</p>
-                        <div class="gallery_meta">
-                        </div>
                     </div>
                 </div>
 
@@ -853,20 +713,14 @@
                 <div class="gallery_card">
                     <span class="gallery_region">❄️ Якутия</span>
                     <div class="gallery_image_container">
-                        <img class="gallery_image" src="https://placehold.co/800x533/f1ebe1/a5b8c9?text=Ленские+столбы" alt="Ленские столбы" onclick="openModal(this)">
-                        <div class="gallery_overlay">
-                            <span class="overlay_icon">🔍</span>
-                        </div>
+                        <img class="gallery_image" src="https://placehold.co/800x533/f1ebe1/a5b8c9?text=Ленские+столбы" alt="Ленские столбы">
                     </div>
                     <div class="gallery_info">
                         <h3 class="gallery_title">Ленские столбы</h3>
                         <div class="gallery_location">
                             <span>📍 Якутия</span>
                         </div>
-                        <p class="gallery_description">Вертикальные скалы высотой до 100 метров вдоль берега реки Лена, объект ЮНЕСКО.</p></span>
-                        </div>
-                        <div class="gallery_meta">
-                        </div>
+                        <p class="gallery_description">Вертикальные скалы высотой до 100 метров вдоль берега реки Лена, объект ЮНЕСКО.</p>
                     </div>
                 </div>
 
@@ -874,10 +728,7 @@
                 <div class="gallery_card">
                     <span class="gallery_region">🏖️ Калининград</span>
                     <div class="gallery_image_container">
-                        <img class="gallery_image" src="https://placehold.co/800x533/f1ebe1/b0aa8f?text=Куршская+коса" alt="Куршская коса" onclick="openModal(this)">
-                        <div class="gallery_overlay">
-                            <span class="overlay_icon">🔍</span>
-                        </div>
+                        <img class="gallery_image" src="https://placehold.co/800x533/f1ebe1/b0aa8f?text=Куршская+коса" alt="Куршская коса">
                     </div>
                     <div class="gallery_info">
                         <h3 class="gallery_title">Куршская коса</h3>
@@ -885,9 +736,6 @@
                             <span>📍 Калининградская область</span>
                         </div>
                         <p class="gallery_description">Узкая песчаная полоса с уникальными дюнами, объект ЮНЕСКО.</p>
-                        <div class="gallery_meta">
-                          <span class="meta_item">Взято с - ...</span>
-                        </div>
                     </div>
                 </div>
 
@@ -895,10 +743,7 @@
                 <div class="gallery_card">
                     <span class="gallery_region">🌴 Сочи</span>
                     <div class="gallery_image_container">
-                        <img class="gallery_image" src="https://placehold.co/800x533/f1ebe1/b58b6d?text=Роза+Хутор" alt="Роза Хутор" onclick="openModal(this)">
-                        <div class="gallery_overlay">
-                            <span class="overlay_icon">🔍</span>
-                        </div>
+                        <img class="gallery_image" src="https://placehold.co/800x533/f1ebe1/b58b6d?text=Роза+Хутор" alt="Роза Хутор">
                     </div>
                     <div class="gallery_info">
                         <h3 class="gallery_title">Роза Хутор</h3>
@@ -906,17 +751,14 @@
                             <span>📍 Сочи</span>
                         </div>
                         <p class="gallery_description">Горнолыжный курорт в Красной Поляне, принимавший Олимпийские игры 2014.</p>
-                        <div class="gallery_meta">
-                        </div>
                     </div>
                 </div>
+
+                <!-- КАРТОЧКА 12: Псков -->
                 <div class="gallery_card">
                     <span class="gallery_region">🏰 Псков</span>
                     <div class="gallery_image_container">
-                        <img class="gallery_image" src="https://placehold.co/800x533/f1ebe1/a58d7f?text=Псковский+Кром" alt="Псковский Кром" onclick="openModal(this)">
-                        <div class="gallery_overlay">
-                            <span class="overlay_icon">🔍</span>
-                        </div>
+                        <img class="gallery_image" src="https://placehold.co/800x533/f1ebe1/a58d7f?text=Псковский+Кром" alt="Псковский Кром">
                     </div>
                     <div class="gallery_info">
                         <h3 class="gallery_title">Псковский Кром</h3>
@@ -924,39 +766,38 @@
                             <span>📍 Псков</span>
                         </div>
                         <p class="gallery_description">Один из древнейших кремлей России, центр средневекового Пскова.</p>
-                        <div class="gallery_meta">
-                        </div>
                     </div>
                 </div>
             </div>
-        </div>
     </main>
 
     <footer class="footer">
         <div class="container">
             <div>
                 <span style="font-size: 1.5rem; font-weight: 700; color: #ffddaa;">Галерея</span>
-                <span style="display: block; margin-top: 0.3rem;">© 2026 · By mouvi</span>
+                <span style="display: block; margin-top: 0.3rem;">© 2026 · Красоты России</span>
             </div>
             <div class="footer_links">
                 <a href="index.html">Главная</a>
                 <a href="karta.html">Карта</a>
-                <a href="https://t.me/Mouvi888">Обратная связь</a>
+                <span href="https://t.me/Mouvi888">anashina.com</span>
             </div>
         </div>
         <div class="footer_bottom">
-            Все фотографии взяты из открытых источников.
+            ⚡ Все фотографии взяты из открытых источников. Для замены изображений измените src в тегах img.
         </div>
     </footer>
-    <div id="imageModal" class="modal" onclick="closeModal(event)">
-        <div class="modal_content">
-            <button class="modal_close" onclick="closeModal(event)">×</button>
-            <img id="modalImage" class="modal_image" src="" alt="">
-            <div id="modalInfo" class="modal_info">
-                <h3 id="modalTitle" style="font-size: 1.5rem; color: var(--primary-dark); margin-bottom: 0.5rem;">Название</h3>
-                <p id="modalDescription" style="color: var(--text-soft);">Описание</p>
-            </div>
-        </div>
-    </div>
+
+    <script>
+        // Фильтры (демонстрация)
+        const filterBtns = document.querySelectorAll('.filter_btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                // Здесь будет логика фильтрации при добавлении реальных фото
+            });
+        });
+    </script>
 </body>
 </html>
