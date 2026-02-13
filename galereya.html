@@ -145,12 +145,10 @@
             font-style: italic;
         }
 
-        /* ===== ОСНОВНОЙ КОНТЕНТ ===== */
         .main_content {
             flex: 1;
         }
 
-        /* ===== ГЕРОЙ ГАЛЕРЕИ ===== */
         .gallery_hero {
             background: linear-gradient(145deg, #fff5eb, #fffaf2);
             border-radius: 60px 60px 60px 20px;
@@ -204,20 +202,19 @@
         }
 
         .stat_number {
-            font-size: 2rem;
+            font-size: 3rem;
             font-weight: 800;
             color: var(--primary);
             line-height: 1;
         }
 
         .stat_label {
-            font-size: 0.9rem;
+            font-size: 1.2rem;
             color: var(--text-soft);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        /* ===== ФИЛЬТРЫ ===== */
         .gallery_filters {
             display: flex;
             flex-wrap: wrap;
@@ -254,7 +251,6 @@
             margin-bottom: 3rem;
         }
 
-        /* ===== КАРТОЧКА ГАЛЕРЕИ ===== */
         .gallery_card {
             background: white;
             border-radius: 32px;
@@ -298,7 +294,6 @@
             transform: scale(1.08);
         }
 
-        /* ОВЕРЛЕЙ ПРИ НАВЕДЕНИИ */
         .gallery_overlay {
             position: absolute;
             top: 0;
@@ -328,7 +323,6 @@
             transform: scale(1);
         }
 
-        /* ПЛАШКА РЕГИОНА */
         .gallery_region {
             position: absolute;
             top: 1rem;
@@ -345,7 +339,6 @@
             z-index: 2;
         }
 
-        /* ИНФОРМАЦИЯ О ФОТО */
         .gallery_info {
             padding: 1.5rem;
             flex: 1;
@@ -707,11 +700,6 @@
                             <span>📍 Карелия</span>
                         </div>
                         <p class="gallery_description">Крупнейшее пресноводное озеро Европы. Скалистые берега и древние шхеры.</p>
-                        <div class="gallery_tags">
-                            <span class="gallery_tag">озеро</span>
-                            <span class="gallery_tag">скалы</span>
-                            <span class="gallery_tag">природа</span>
-                        </div>
                         <div class="gallery_meta">
                         </div>
                     </div>
@@ -732,10 +720,6 @@
                             <span>📍 Кабардино-Балкария</span>
                         </div>
                         <p class="gallery_description">Высочайшая вершина России и Европы (5642 м). Двуглавый стратовулкан.</p>
-                        <div class="gallery_tags">
-                            <span class="gallery_tag">горы</span>
-                            <span class="gallery_tag">вершина</span>
-                            <span class="gallery_tag">снег</span>
                         </div>
                         <div class="gallery_meta">
                         </div>
@@ -757,10 +741,6 @@
                             <span>📍 Иркутская область / Бурятия</span>
                         </div>
                         <p class="gallery_description">Самое глубокое озеро на планете, хранит 20% всей пресной воды мира.</p>
-                        <div class="gallery_tags">
-                            <span class="gallery_tag">озеро</span>
-                            <span class="gallery_tag">ЮНЕСКО</span>
-                            <span class="gallery_tag">лед</span>
                         </div>
                         <div class="gallery_meta">
                         </div>
@@ -782,10 +762,6 @@
                             <span>📍 Республика Алтай</span>
                         </div>
                         <p class="gallery_description">Высшая точка Алтая (4509 м), священная гора для алтайцев.</p>
-                        <div class="gallery_tags">
-                            <span class="gallery_tag">горы</span>
-                            <span class="gallery_tag">ледники</span>
-                            <span class="gallery_tag">священное</span>
                         </div>
                         <div class="gallery_meta">
                         </div>
@@ -807,11 +783,6 @@
                             <span>📍 Камчатский край</span>
                         </div>
                         <p class="gallery_description">Объект Всемирного наследия ЮНЕСКО. Более 300 вулканов, 29 действующих.</p>
-                        <div class="gallery_tags">
-                            <span class="gallery_tag">вулканы</span>
-                            <span class="gallery_tag">гейзеры</span>
-                            <span class="gallery_tag">ЮНЕСКО</span>
-                        </div>
                         <div class="gallery_meta">
                         </div>
                     </div>
@@ -832,10 +803,6 @@
                             <span>📍 Ялта, Крым</span>
                         </div>
                         <p class="gallery_description">Знаменитый замок на отвесной скале мыса Ай-Тодор, символ Южного берега Крыма.</p>
-                        <div class="gallery_tags">
-                            <span class="gallery_tag">замок</span>
-                            <span class="gallery_tag">море</span>
-                            <span class="gallery_tag">скала</span>
                         </div>
                         <div class="gallery_meta">
                         </div>
@@ -857,11 +824,6 @@
                             <span>📍 Владимирская область</span>
                         </div>
                         <p class="gallery_description">Город-музей под открытым небом, жемчужина Золотого кольца России.</p>
-                        <div class="gallery_tags">
-                            <span class="gallery_tag">история</span>
-                            <span class="gallery_tag">церкви</span>
-                            <span class="gallery_tag">архитектура</span>
-                        </div>
                         <div class="gallery_meta">
                         </div>
                     </div>
@@ -882,11 +844,6 @@
                             <span>📍 Челябинская область</span>
                         </div>
                         <p class="gallery_description">Национальный парк с уникальными каменными реками и останцами причудливых форм.</p>
-                        <div class="gallery_tags">
-                            <span class="gallery_tag">горы</span>
-                            <span class="gallery_tag">камни</span>
-                            <span class="gallery_tag">парк</span>
-                        </div>
                         <div class="gallery_meta">
                         </div>
                     </div>
@@ -906,11 +863,7 @@
                         <div class="gallery_location">
                             <span>📍 Якутия</span>
                         </div>
-                        <p class="gallery_description">Вертикальные скалы высотой до 100 метров вдоль берега реки Лена, объект ЮНЕСКО.</p>
-                        <div class="gallery_tags">
-                            <span class="gallery_tag">скалы</span>
-                            <span class="gallery_tag">река</span>
-                            <span class="gallery_tag">ЮНЕСКО</span>
+                        <p class="gallery_description">Вертикальные скалы высотой до 100 метров вдоль берега реки Лена, объект ЮНЕСКО.</p></span>
                         </div>
                         <div class="gallery_meta">
                         </div>
@@ -932,11 +885,6 @@
                             <span>📍 Калининградская область</span>
                         </div>
                         <p class="gallery_description">Узкая песчаная полоса с уникальными дюнами, объект ЮНЕСКО.</p>
-                        <div class="gallery_tags">
-                            <span class="gallery_tag">дюны</span>
-                            <span class="gallery_tag">море</span>
-                            <span class="gallery_tag">ЮНЕСКО</span>
-                        </div>
                         <div class="gallery_meta">
                           <span class="meta_item">Взято с - ...</span>
                         </div>
